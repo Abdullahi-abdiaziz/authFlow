@@ -32,33 +32,33 @@ export const GoogleAuthStrategy = (passport) => {
   );
 
   // GitHub Strategy
-  passport.use(
-    new GoogleStrategy(
-      {
-        clientID: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: "/api/auth/google/callback",
-      },
-      (accessToken, refreshToken, profile, done) => {
-        // Extract user info from profile
+  // passport.use(
+  //   new GoogleStrategy(
+  //     {
+  //       clientID: process.env.GOOGLE_CLIENT_ID,
+  //       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  //       callbackURL: "/api/auth/google/callback",
+  //     },
+  //     (accessToken, refreshToken, profile, done) => {
+  //       // Extract user info from profile
 
-        const user = {
-          email: profile.emails[0].value,
-          name: profile.displayName,
-          authType: "google",
-          avatar: profile.photos[0].value,
-        };
+  //       const user = {
+  //         email: profile.emails[0].value,
+  //         name: profile.displayName,
+  //         authType: "google",
+  //         avatar: profile.photos[0].value,
+  //       };
 
-        // Generate JWT token
-        const token = jwt.sign({ user }, process.env.JWT_SECRET, {
-          expiresIn: "7d",
-        });
+  //       // Generate JWT token
+  //       const token = jwt.sign({ user }, process.env.JWT_SECRET, {
+  //         expiresIn: "7d",
+  //       });
 
-        // Pass the user and token explicitly
-        return done(null, { user, token });
-      }
-    )
-  );
+  //       // Pass the user and token explicitly
+  //       return done(null, { user, token });
+  //     }
+  //   )
+  // );
   passport.serializeUser((user, done) => {
     done(null, user);
   });
@@ -81,10 +81,6 @@ export const GithubAuthStrategy = (passport) => {
       },
       (accessToken, refreshToken, profile, done) => {
         // Extract user info from profile
-        console.log(
-          "Full GitHub profile object:",
-          JSON.stringify(profile, null, 2)
-        );
 
         const user = {
           email: profile.username,

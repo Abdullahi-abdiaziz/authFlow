@@ -112,36 +112,3 @@ export const GithubAuthStrategy = (passport) => {
 };
 
 export default { GithubAuthStrategy, GoogleAuthStrategy };
-
-/**
- * Database connected sucessfully cluster0-shard-00-01.ybeba.mongodb.net
-Extracting user info from Google profile:  {
-  id: '100321946112775104130',
-  displayName: 'Abdullahi Abdiaziz',
-  name: { familyName: 'Abdiaziz', givenName: 'Abdullahi' },
-  emails: [ { value: 'abdullahikawte2019@gmail.com', verified: true } ],
-  photos: [
-    {
-      value: 'https://lh3.googleusercontent.com/a/ACg8ocIhtRmR52N-Kd88S1HRCK0-U5HZUeVjgtUjqaVkRu3HiiD5DKY=s96-c'
-    }
-  ],
-  provider: 'google',
-  _raw: '{\n' +
-    '  "sub": "100321946112775104130",\n' +
-    '  "name": "Abdullahi Abdiaziz",\n' +
-    '  "given_name": "Abdullahi",\n' +
-    '  "family_name": "Abdiaziz",\n' +
-    '  "picture": "https://lh3.googleusercontent.com/a/ACg8ocIhtRmR52N-Kd88S1HRCK0-U5HZUeVjgtUjqaVkRu3HiiD5DKY\\u003ds96-c",\n' +
-    '  "email": "abdullahikawte2019@gmail.com",\n' +
-    '  "email_verified": true\n' +
-    '}',
-  _json: {
-    sub: '100321946112775104130',
-    name: 'Abdullahi Abdiaziz',
-    given_name: 'Abdullahi',
-    family_name: 'Abdiaziz',
-    picture: 'https://lh3.googleusercontent.com/a/ACg8ocIhtRmR52N-Kd88S1HRCK0-U5HZUeVjgtUjqaVkRu3HiiD5DKY=s96-c',
-    email: 'abdullahikawte2019@gmail.com',
-    email_verified: true
-  }
- */

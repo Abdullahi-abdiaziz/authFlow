@@ -30,12 +30,12 @@ export default function AuthForm({
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormData | RegisterFormData>({
-    resolver: zodResolver(type === "login" ? loginSchema : registerSchema),
+    resolver: zodResolver(type === "register" ? registerSchema : loginSchema),
   });
 
   return (
-    <div className="min-h-[92vh] bg-gradient-to-br from-indigo-100 via-white to-pink-100 flex items-center justify-center p-6">
-      <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-lg">
+    <div className="min-h-[92vh] *:transition-all *:duration-300 *:ease-in-out bg-gradient-to-br from-indigo-100 via-white to-pink-100 flex items-center justify-center p-6">
+      <div className="max-w-md sm:max-w-lg  w-full space-y-8 bg-white p-8 rounded-xl shadow-lg">
         <div className="text-center">
           <Lock className="mx-auto h-12 w-12 text-indigo-600" />
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
@@ -123,6 +123,7 @@ export default function AuthForm({
                 type="password"
                 {...register("password")}
                 className="mt-1 appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                autoComplete="false"
                 placeholder="••••••••"
               />
               {errors.password && (
@@ -155,28 +156,26 @@ export default function AuthForm({
               <div className="w-full border-t border-gray-300" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">
-                Or continue with
-              </span>
+              <span className="px-2 bg-white text-gray-500">OR</span>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-rows-2 sm:grid-cols-2  gap-3">
             <button
               type="button"
               onClick={onGoogleClick}
-              className="w-full inline-flex justify-center py-2 px-3 border border-gray-300 rounded-md shadow-sm bg-white text-xs font-medium text-gray-500 hover:bg-red-50"
+              className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-red-50"
             >
-              <MailsIcon className="h-4 w-4 text-red-500" />
+              <MailsIcon className="h-5 w-5 text-red-500" />
 
               <span className="ml-2">continue with Google</span>
             </button>
             <button
               type="button"
               onClick={onGithubClick}
-              className="w-full inline-flex justify-center py-2 px-3 text-xs border border-gray-300 rounded-md shadow-sm bg-white font-medium text-gray-500 hover:bg-gray-100"
+              className="w-full inline-flex justify-center py-2 px-4 text-sm border border-gray-300 rounded-md shadow-sm bg-white font-medium text-gray-500 hover:bg-gray-100"
             >
-              <GithubIcon className="h-4 w-4" />
+              <GithubIcon className="h-5 w-5" />
               <span className="ml-2">continue with GitHub</span>
             </button>
           </div>

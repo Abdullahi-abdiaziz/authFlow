@@ -131,7 +131,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         },
       });
     } catch (error) {
-      toast.error("Invalid credentials", {
+      toast.error(error.message ? error.message : "Invalid credentials", {
         style: {
           borderRadius: "5px",
           background: "#ff000010",
@@ -178,6 +178,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const logout = () => {
     localStorage.removeItem("token");
+    Cookies.remove("token");
     dispatch({ type: "LOGOUT" });
     toast.success("Successfuly Logged out", {
       style: {
